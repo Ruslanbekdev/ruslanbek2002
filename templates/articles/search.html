@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+{% block content %}
+<header style = "margin : 20px">
+    <a href = " {% url 'base' %}" >Bosh Sahifa </a>
+</header> 
+{% comment %} <form method = 'post' style = "margin-top: 20px " action="http://127.0.0.1:8000/articles/search/">
+    {% csrf_token %}
+    <input type = 'text' name = 'qy' placeholder = "search" style = "padding: 15px">
+    <button type = 'submit' style = "padding: 15px">Search</button>
+</form> {% endcomment %}
+<ul>
+    {% for message in messages %}
+        <li>
+            <h1>{{message}}</h1>
+        </li>
+    {% endfor %}
+</ul> 
+{% if object %}
+<h1 style = 'text-align:center'>Searched list elemts </h1>
+<br>
+<hr>
+{% for obj in object  %}
+<h2 style = 'text-align:center'> {{obj.title}}</h2>
+<br>
+<h2 style = 'text-align:center'>{{obj.content}}</h2>
+<br>
+{% endfor %}
+{% endif %}
+{% endblock %}

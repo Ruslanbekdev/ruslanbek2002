@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content%}
+{% comment %} <h2 > <a href = "/articles/my-articles/"> My articles </a></h2> {% endcomment %}
+{% comment %} <h2><a href = "/articles/fcreate/"> create </a></h2> {% endcomment %}
+<ul style = "text-align : center">
+    {% for object in object_list %}
+    <li style = "list-style:none, text-align: center"> 
+        {% comment %} <a href = "{{ object.slug }}"> Bu url da slug qoyishning 1 - usuli</a> {% endcomment %}
+        {% comment %} <a href="{{ object.get_absolute_url }}"> <b>{{ forloop.counter }} - {{object.title}} - {{object.content}}</b></a> {% endcomment %}
+        <a href="{% url 'detail_index' object.slug %}" > <b>{{ forloop.counter }} - {{object.title}} - {{object.content}}</b></a>
+        <br>
+        <hr>
+    </li>
+    {% endfor %}    
+</ul>
+{% comment %} <header>
+    <br>
+    <a href="{% url 'search' %}"> <h3>Search list ...</h3></a>
+    <br>
+</header> {% endcomment %}
+{% comment %} <header>
+    <br>
+    <a href="{% url 'create' %}"> <h3>Create list ...</h3></a>
+    <br>
+</header> {% endcomment %}
+{% comment %} <header>
+    <br>
+    <a href="{% url 'login-view' %}"> <h3>Login app</h3></a>
+    <br>
+</header> {% endcomment %}
+{% comment %} <header>
+    <br>
+    <a href="{% url 'log-out' %}"> <h3>Logout in admin panel</h3></a>
+    <br>
+</header> {% endcomment %}
+{% comment %} <header>
+    <br>
+    <a href="{% url 'fcreate' %}"> <h3>Create title and content</h3></a>
+    <br>
+</header> {% endcomment %}
+{% comment %} <header>
+    <br>
+    <a href="{% url 'register' %}"> <h3>Register for user</h3></a>
+    <br>
+</header> {% endcomment %}
+<button id="hello-btn" class="btn btn-primary">Hello</button>
+{% endblock content %}

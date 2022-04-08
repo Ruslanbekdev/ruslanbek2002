@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<header>
+    <a href = "../">Pervious </a>
+</header>
+
+{% if not request.user.is_authenticated %}
+<div style = "text-align : center">
+
+<form   method="post">
+    {% csrf_token %}
+    {% comment %} <div style="margin-top:20px">
+        <input  style = "padding: 5px; font-size : 20px", type="text", name="username", placeholder="username">
+    </div>
+    <div style="margin-top:20px">
+        <input style = "padding: 5px; font-size : 20px", type="password", name="password", placeholder="password">
+    </div> {% endcomment %}
+    {{ form.as_p }}
+    <input style = "padding: 5px; font-size : 20px ; margin-top:20px" type="submit" value="Login">
+</form>
+
+<h2> Accountingiz bolmasa birinchi <a href = "/register"> Register </a> qiling !! </h2>
+{% else %}
+<h2>Siz Login in qilgansiz <a href = "/logout"> Logout  </a> qiling !! </h2>
+{% endif %}
+
+<ul>
+    {% if messages %}
+        {% for message in messages %}
+            <li>{{message}}</li>
+        {% endfor %}
+    {% endif %}
+</ul>
+</div>
+{% endblock content %}
+

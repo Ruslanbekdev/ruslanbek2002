@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content%}
+<header>
+  <a href = "../">Pervious </a>
+</header>
+<br>  
+    <h2> {{object.author}} </h2>
+    {% if object.image %}
+    <img src="{{ object.image.url }}" alt="" style="width:700px; margin-left:450px">
+    {% endif %}
+    <h1 style = "text-align : center"> <b> {{ object.title }} -  ID: {{ object.id }} </b> </h1>
+    <p  style = "text-align : center"> Bu yerda Title va Content chiqadi </p>
+    <h4  style = "text-align : center"> {{ object.content }}  </h4>
+  {% for obj in object.tags.all %}
+    <h2 style="text-align:center; margin-top:20px"> #{{ obj }} </h2>
+  {% endfor %}
+<div style = "margin-top: 20px">
+  <a href ="{% url 'article_update' object.slug %}"><h3 style="text-align:center">Update</h3> </a>
+</div>
+<div style = "margin-top: 20px">
+  <a href ="{% url 'article_delate' object.slug %}"><h3 style="text-align:center">Delate</h3> </a>
+</div>
+{% endblock %}
+  

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+{% comment %} {{ request.user }} {% endcomment %}
+{% comment %} {% if request.user.is_authenticated %} {% endcomment %}
+<form  method="post">
+    {% csrf_token %}
+    <h3>Ishonchiz komilmi log out qilishga ? </h3>
+    <button style="padding :5px" , type="submit">Yes I am logout</button>
+</form>
+ <h3> Birinchi <a href = "/login"> Login </a> qilishingiz kerak ! </h3>
+{% endblock %}
